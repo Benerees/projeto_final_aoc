@@ -136,45 +136,7 @@ get_input:
     li $a1, 100
     syscall
 
-    # Validação do input
-    la $t0, input_buffer
-
-    # Verifica primeira letra (A-D)
-    lb $t1, 0($t0)
-    blt $t1, 'A', invalid_input
-    bgt $t1, 'D', invalid_input
-
-    # Verifica primeiro número (1-4)
-    lb $t1, 1($t0)
-    blt $t1, '1', invalid_input
-    bgt $t1, '4', invalid_input
-    
-    # Verifica espaço
-    lb $t1, 2($t0)
-    bne $t1, ' ', invalid_input
-    
-    # Verifica segunda letra (A-D)
-    lb $t1, 3($t0)
-    blt $t1, 'A', invalid_input
-    bgt $t1, 'D', invalid_input
-
-    # Verifica segundo número (1-4)
-    lb $t1, 4($t0)
-    blt $t1, '1', invalid_input
-    bgt $t1, '4', invalid_input
-
-    # Verifica se as posições são diferentes
-    lb $t1, 0($t0)     # primeira coluna
-    lb $t2, 1($t0)     # primeira linha
-    lb $t3, 3($t0)     # segunda coluna
-    lb $t4, 4($t0)     # segunda linha
-
-    beq $t1, $t3, check_lines  # Se colunas iguais, verifica linhas
-
-    j process_input
-
-check_lines:
-    beq $t2, $t4, invalid_input  # Se linhas também iguais, input inválido    
+    j process_input   
 
 process_input:    
     # Processa primeira posição
@@ -185,7 +147,7 @@ process_input:
     subi $t1, $t1, 65  # A -> 0
     subi $t2, $t2, 49  # 1 -> 0
     mul $t2, $t2, 4
-    add $t3, $t1, $t2  # índice = linha*4 + coluna
+    add $t3, $t1, $t2 
 
     # Processa segunda posição
     lb $t1, 3($t0)     # coluna (A-D)
