@@ -135,7 +135,9 @@ get_input:
     la $a0, input_buffer
     li $a1, 100
     syscall
-
+    
+    la $t0, input_buffer
+   
     j process_input   
 
 process_input:    
