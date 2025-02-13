@@ -59,7 +59,7 @@ tabuleiro_ponteiros:   .word hidden_board_1, hidden_board_2, hidden_board_3, hid
     .text
     .globl main
 
-# Inicializa o jogo e entra no loop principal
+# Inicializa o jogo e seleciona a seed
 main:
     li $v0, 42       # syscall para gerar número aleatório
     li $a1, 4        # Define o intervalo de 0 a 3
@@ -70,22 +70,22 @@ main:
     la $t1, tabuleiro_ponteiros  # Carrega o endereço do vetor de ponteiros
     sll $t0, $t0, 2         # Faz o deslocamento de 0(equivalente a multiplicar por 4)
     add $t1, $t1, $t0       # Adiciona o deslocamento do vetor tabuleiro_ponteiros baseado na multiplicação do valor aleatório e calculado na função acima
-    lw $t2, 0($t1)          # Carrega o endereço do tabuleiro selecionado
+    lw $t2, 0($t1)          # Carrega o endereço do tabuleiro da seed
 
-    # Copiar tabuleiro para hidden_board
-    la $t3, hidden_board    # Endereço do destino
-    li $t4, 16             # Tamanho do tabuleiro
-    li $t5, 0              # Índice
+    la $t3, hidden_board    
+    li $t4, 16             
+    li $t5, 0
 
 copy_loop:
-    lb $t6, 0($t2)         # Carregar byte do tabuleiro selecionado
-    sb $t6, 0($t3)         # Armazenar em hidden_board
-    addiu $t2, $t2, 1      # Avançar origem
-    addiu $t3, $t3, 1      # Avançar destino
-    addiu $t5, $t5, 1      # Incrementar contador
-    blt $t5, $t4, copy_loop # Repetir até copiar tudo
+    lb $t6, 0($t2)         # Carregar byte do tabuleiro da seed
+    sb $t6, 0($t3)         # Armazena no tabuleiro do jogo
+    addiu $t2, $t2, 1  
+    addiu $t3, $t3, 1     
+    addiu $t5, $t5, 1     
+    blt $t5, $t4, copy_loop
 
-sw $zero, matches_found
+# Entra no loop principal
+game_body:
     sw $zero, matches_found
     jal game_loop
     li $v0, 10
