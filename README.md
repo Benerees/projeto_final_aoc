@@ -26,9 +26,9 @@ Para rodarmos o MARS, simulador e runtime de Assembly, é necessário instalarmo
 
 Após baixado o Java, é necessário baixarmos o MARS que pode ser realizado por este [link](https://github.com/dpetersanderson/MARS/releases/download/v.4.5.1/Mars4_5.jar)
 
-Feito o download, precisamos rodar a aplicação com o Java. Se utilizado no Windos, podemos fazer tanto por terminal:
+Feito o download, precisamos rodar a aplicação com o Java. Se utilizado no Windows, podemos fazer tanto por terminal:
 ```
-java Mars4_5.jar
+java -jar Mars4_5.jar
 ```
 
 Quanto pelo próprio Windows com o botão direito do mouse e abrir com Java Open Plataform.
