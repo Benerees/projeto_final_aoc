@@ -48,20 +48,71 @@ board:  .byte '?','?','?','?',
 
 
 # Array oculto (back) - pares de letras
-hidden_board:   .byte 'A','B','C','D',
+hidden_board_1:   .byte 'A','B','C','D',
 
                 'E','F','G','H',
 
                 'A','B','C','D',
 
                 'E','F','G','H'
+                
+hidden_board_2:   .byte 'B','A','C','G',
 
-        .text
-        .globl main
+                'G','F','D','H',
+
+                'A','B','E','D',
+
+                'E','H','C','F'
+                
+hidden_board_3:   .byte 'A','A','C','G',
+
+                'H','F','G','H',
+
+                'B','E','B','D',
+
+                'E','D','C','F'
+   
+hidden_board_4:   .byte 'F','D','E','G',
+
+                'G','F','H','D',
+
+                'A','C','C','A',
+
+                'B','H','B','E'
+                
+hidden_board:     .space 16
+             
+tabuleiro_ponteiros:   .word hidden_board_1, hidden_board_2, hidden_board_3, hidden_board_4
+
+    .text
+    .globl main
 
 main:
-    # Inicializa contador de matches
-    sw $zero, matches_found
+    li $v0, 42       # syscall para gerar número aleatório
+    li $a1, 4        # Define o intervalo de 0 a 3
+    syscall
+    move $t0, $a0  
+
+    #Obtem o enderço do tabuleiro sorteado (seed)
+    la $t1, tabuleiro_ponteiros  # Carrega o endereço do vetor de ponteiros
+    sll $t0, $t0, 2         # Faz o deslocamento de 0(equivalente a multiplicar por 4)
+    add $t1, $t1, $t0       # Adiciona o deslocamento do vetor tabuleiro_ponteiros baseado na multiplicação do valor aleatório e calculado na função acima
+    lw $t2, 0($t1)          # Carrega o endereço do tabuleiro selecionado
+
+    # Copiar tabuleiro para hidden_board
+    la $t3, hidden_board    # Endereço do destino
+    li $t4, 16             # Tamanho do tabuleiro
+    li $t5, 0              # Índice
+
+copy_loop:
+    lb $t6, 0($t2)         # Carregar byte do tabuleiro selecionado
+    sb $t6, 0($t3)         # Armazenar em hidden_board
+    addiu $t2, $t2, 1      # Avançar origem
+    addiu $t3, $t3, 1      # Avançar destino
+    addiu $t5, $t5, 1      # Incrementar contador
+    blt $t5, $t4, copy_loop # Repetir até copiar tudo
+
+sw $zero, matches_found
 
 game_loop:
     # Imprime o rótulo do tabuleiro
