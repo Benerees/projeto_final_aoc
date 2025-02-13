@@ -20,11 +20,11 @@ Para vencer, é necessário dar o Match em todas cartas.
 
 ### Instalar o Java
 
-Para rodarmos o MARS, simulador e runtime de Assembly, é necessário instalarmos o Java. Para isso, é possível ![acessar aqui](https://www.java.com/pt-BR/download/help/download_options_pt-br.html). 
+Para rodarmos o MARS, simulador e runtime de Assembly, é necessário instalarmos o Java. Para isso, é possível [acessar aqui](https://www.java.com/pt-BR/download/help/download_options_pt-br.html). 
 
 ### Baixar e Rodar o MARS
 
-Após baixado o Java, é necessário baixarmos o MARS que pode ser realizado por este ![link](https://github.com/dpetersanderson/MARS/releases/download/v.4.5.1/Mars4_5.jar)
+Após baixado o Java, é necessário baixarmos o MARS que pode ser realizado por este [link](https://github.com/dpetersanderson/MARS/releases/download/v.4.5.1/Mars4_5.jar)
 
 Feito o download, precisamos rodar a aplicação com o Java. Se utilizado no Windos, podemos fazer tanto por terminal:
 ```
@@ -35,7 +35,7 @@ Quanto pelo próprio Windows com o botão direito do mouse e abrir com Java Open
 
 ### Rodar o Jogo
 
-Para compilar o jogo, acesse no canto superior direito File, e clique em Open(Ctrl + O). Selecione o protótipo do jogo.
+Para compilar o jogo, acesse no canto superior esquerdo a aba "File", e clique na opção "Open(Ctrl + O)". Selecione o arquivo do jogo.
 
 Após isso, vá na aba Run e clique em Assemble(F3) e logo após em Go(F5).
 
