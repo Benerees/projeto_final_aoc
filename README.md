@@ -41,6 +41,12 @@ Após isso, vá na aba Run e clique em Assemble(F3) e logo após em Go(F5).
 
 E Pronto!! Você está pronto para jogar!!
 
+## Vídeo apresentando
+[https://www.youtube.com/watch?v=2DvLHcveo8s](https://www.youtube.com/watch?v=2DvLHcveo8s)
+
+## Teste o Projeto!
+[Clique aqui](https://jogo-memoria-ecru.vercel.app/)
+
 ![image](https://github.com/user-attachments/assets/948fabc6-cfbb-408b-92e0-b5aa6cc36b45)
 
 
