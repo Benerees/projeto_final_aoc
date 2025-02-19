@@ -43,6 +43,9 @@ E Pronto!! Você está pronto para jogar!!
 
 ![image](https://github.com/user-attachments/assets/948fabc6-cfbb-408b-92e0-b5aa6cc36b45)
 
+## Vídeo de Apresentação do Projeto
+
+[Clique Aqui!](https://youtu.be/O_FBSI3SEnk)
 
 
 
